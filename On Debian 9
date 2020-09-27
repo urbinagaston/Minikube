@@ -10,6 +10,27 @@ apt install -y kubectl
 
 
 Instalar Minikube
+
 Descarga Minikube
 
 egrep --color 'vmx|svm' /proc/cpuinfo = Verifica tener habilitada en la bios la virtualización.
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/minikube-linux-amd64
+chmod +x minikube
+sudo cp minikube /usr/local/bin/
+rm minikube
+
+Install dependencies for kvm2 driver
+sudo apt install libvirt-clients libvirt-daemon-system qemu-kvm -y
+
+Add your current user to libvirt to negate need for root
+sudo usermod -aG libvirt $(whoami)
+
+Update your current session to force the change
+newgrp libvirt
+
+Install kvm2 drivers for Debian.
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
+  && sudo install docker-machine-driver-kvm2 /usr/local/bin/
+
+Specify the driver when you start Minikube.
+minikube start --vm-driver kvm2
