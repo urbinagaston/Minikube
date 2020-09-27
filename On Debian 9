@@ -1,1 +1,15 @@
+Instalar Kubectl
 
+apt-update
+apt-upgrade
+apt-get install curl -y
+apt install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+apt update
+apt install -y kubectl
+
+
+Instalar Minikube
+Descarga Minikube
+
+egrep --color 'vmx|svm' /proc/cpuinfo = Verifica tener habilitada en la bios la virtualización.
