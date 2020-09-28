@@ -1,11 +1,10 @@
 Instalar Kubectl
 
-apt-get update
-apt-get upgrade
-apt-get install curl -y
-apt install -y apt-transport-https
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-apt update
+apt-get update &&
+apt-get upgrade -y &&
+apt-get install curl apt-transport-https -y &&
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - 
+apt update &&
 apt install -y kubectl
 
 
